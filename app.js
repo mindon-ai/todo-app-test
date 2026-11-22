@@ -46,13 +46,13 @@
       button.classList.toggle('active', selected); button.setAttribute('aria-pressed', String(selected));
     });
   }
-  input.addEventListener('input', () => { addButton.disabled = input.value.trim().length === 0; addButton.setAttribute('aria-disabled', String(addButton.disabled)); });
+  input.addEventListener('input', () => { addButton.setAttribute('aria-disabled', String(input.value.trim().length === 0)); });
   form.addEventListener('submit', event => {
     event.preventDefault();
     const text = input.value.trim();
     if (!text) return;
     todos.push({ id: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`, text, completed: false });
-    save(); input.value = ''; addButton.disabled = true; addButton.setAttribute('aria-disabled', 'true'); render(); input.focus();
+    save(); input.value = ''; addButton.setAttribute('aria-disabled', 'true'); render(); input.focus();
   });
   filterButtons.forEach(button => button.addEventListener('click', () => { filter = button.dataset.filter; render(); }));
   clearButton.addEventListener('click', () => { todos = todos.filter(todo => !todo.completed); save(); render(); });
