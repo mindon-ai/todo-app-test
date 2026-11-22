@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A clean, accessible, distraction-free to-do list with local storage persistence.">
+  <title>My To-Dos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-layout">
+    <header class="app-header">
+      <h1 class="app-title">My To-Dos</h1>
+    </header>
+
+    <div class="card">
+      <!-- Input Section -->
+      <form id="todo-form" class="todo-form" autocomplete="off" novalidate>
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="todo-input"
+            class="todo-input"
+            placeholder="Add a new task…"
+            aria-label="New task description"
+            maxlength="250"
+            required
+          >
+          <button type="submit" id="add-btn" class="btn btn-primary" disabled aria-disabled="true">
+            Add
+          </button>
+        </div>
+      </form>
+
+      <!-- Filter Controls & Actions Bar -->
+      <div class="controls-bar" role="toolbar" aria-label="Task filters and bulk actions">
+        <div class="filter-group" role="group" aria-label="Filter tasks">
+          <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-btn" data-filter="active" aria-pressed="false">Active</button>
+          <button type="button" class="filter-btn" data-filter="completed" aria-pressed="false">Completed</button>
+        </div>
+        <button
+          type="button"
+          id="clear-completed-btn"
+          class="clear-btn"
+          aria-label="Clear all completed tasks"
+          disabled
+        >
+          Clear completed
+        </button>
+      </div>
+
+      <!-- Task List Container -->
+      <ul id="todo-list" class="todo-list" aria-live="polite" aria-label="Task list"></ul>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="empty-state" hidden>
+        No tasks yet. Add one above!
+      </div>
+
+      <!-- Card Footer -->
+      <footer class="card-footer">
+        <span id="todo-count" class="todo-count" aria-live="polite" aria-atomic="true">0 items left</span>
+      </footer>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
